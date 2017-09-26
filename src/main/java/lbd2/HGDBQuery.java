@@ -8,18 +8,19 @@ import org.hypergraphdb.HGQuery.hg;
 public class HGDBQuery {
 	public static void main(String[] args) { 
 		String databaseLocation = "/home/karine/Documents/hypergraphdb-1.3"; 
-		HyperGraph copaGraph = null;
+		HyperGraph movieGraph = null;
 		try { 
-			copaGraph = new HyperGraph(databaseLocation);
+			movieGraph = new HyperGraph(databaseLocation);
 		
 			//Query de consulta
-			 List<Copa> copas = hg.getAll(copaGraph, hg.and(hg.type(Copa.class), hg.eq("ano", "2002")));
-		       for (Copa copa : copas)
-		           System.out.println(copa.getAno());
+			 List<Movie> movies = hg.getAll(movieGraph, hg.and(hg.type(Movie.class), hg.eq("year", "2017")));
+		       for (Movie movie: movies)
+		          System.out.println(movie.getTitle());
+		     
 		} catch (Throwable t) {
 			t.printStackTrace();
 		} finally {
-		    copaGraph.close();
+		    movieGraph.close();
 		}
 	}
 
